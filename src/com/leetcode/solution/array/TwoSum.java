@@ -9,6 +9,13 @@ import java.util.Map;
  */
 public class TwoSum {
 
+    /**
+     * O(n^2)
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
     public static int[] addTwoSum1(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
@@ -20,6 +27,13 @@ public class TwoSum {
         throw new IllegalArgumentException("Not found!");
     }
 
+    /**
+     * O(n)
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
     public static int[] addTwoSum2(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
@@ -28,21 +42,28 @@ public class TwoSum {
 
         for (int i = 0; i < nums.length; i++) {
             int comp = target - nums[i];
-            if(map.containsKey(comp) && map.get(comp)!=i) {
+            if (map.containsKey(comp) && map.get(comp) != i) {
                 return new int[]{i, map.get(comp)};
             }
         }
         throw new IllegalArgumentException("Not found!");
     }
 
+    /**
+     * O(n)
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
     public static int[] addTwoSum3(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             int comp = target - nums[i];
-            if(map.containsKey(comp)) {
+            if (map.containsKey(comp)) {
                 return new int[]{i, map.get(comp)};
             }
-            map.put(nums[i],i);
+            map.put(nums[i], i);
         }
         throw new IllegalArgumentException("Not found!");
     }
