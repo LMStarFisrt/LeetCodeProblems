@@ -4,6 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 给定一个整数数列，找出其中和为特定值的那两个数。
+ * <p>
+ * 你可以假设每个输入都只会有一种答案，同样的元素不能被重用。
+ * <p>
+ * 示例:
+ * <p>
+ * 给定 nums = [2, 7, 11, 15], target = 9
+ * <p>
+ * 因为 nums[0] + nums[1] = 2 + 7 = 9
+ * 所以返回 [0, 1]
+ *
  * @author dadisdad
  * @date 2017/10/31
  */
