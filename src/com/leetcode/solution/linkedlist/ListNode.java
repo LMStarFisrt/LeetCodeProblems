@@ -1,0 +1,17 @@
+package com.leetcode.solution.linkedlist;
+
+/**
+ * Definition for singly-linked list
+ *
+ * @author dadisdad
+ * @date 2018/4/18
+ */
+public class ListNode {
+
+    int val;
+    ListNode next;
+
+    ListNode(int x) {
+        val = x;
+    }
+}
