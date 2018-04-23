@@ -2,8 +2,8 @@ package com.leetcode.solution.linkedlist;
 
 
 /**
- *
  * 合并两个有序链表
+ *
  * @author dadisdad
  * @date 2018/1/24
  */
@@ -65,13 +65,4 @@ public class MergeTwoSortedLists {
 
     }
 
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-    }
 }

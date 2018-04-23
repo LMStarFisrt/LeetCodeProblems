@@ -33,5 +33,7 @@ public class DeleteNode {
         n3.next = n4;
 
         deleteNode(n3);
+
+        ListUtils.tranverseListNode(n1);
     }
 }
