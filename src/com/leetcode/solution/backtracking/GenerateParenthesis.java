@@ -25,23 +25,23 @@ public class GenerateParenthesis {
     public static List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
         String temp = "";
-        backtracking(n,result,temp,0,0);
+        backtracking(n, result, temp, 0, 0);
         return result;
     }
 
     private static void backtracking(int n, List<String> result, String temp, int left, int right) {
-        if (left>n || right>n|| left<right){
+        if (left > n || right > n || left < right) {
             return;
         }
-        if (left==n && right==n){
+        if (left == n && right == n) {
             result.add(temp);
-        }else {
-            backtracking(n,result,temp+"(",left+1,right);
-            backtracking(n,result,temp+")",left,right+1);
+        } else {
+            backtracking(n, result, temp + "(", left + 1, right);
+            backtracking(n, result, temp + ")", left, right + 1);
         }
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(generateParenthesis(4).toArray()));
+        System.out.println(Arrays.toString(generateParenthesis(3).toArray()));
     }
 }
