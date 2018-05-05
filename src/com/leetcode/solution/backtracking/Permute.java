@@ -36,14 +36,14 @@ public class Permute {
     private static void backtracking(int[] nums, List<List<Integer>> result, List<Integer> list) {
         if (list.size() == nums.length) {
             result.add(new ArrayList<>(list));
-        }else {
+        } else {
             for (int i = 0; i < nums.length; i++) {
                 if (list.contains(nums[i])) {
                     continue;
                 }
                 list.add(nums[i]);
                 backtracking(nums, result, list);
-                list.remove(list.size()-1);
+                list.remove(list.size() - 1);
             }
         }
     }
