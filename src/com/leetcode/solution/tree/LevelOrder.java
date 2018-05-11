@@ -58,6 +58,23 @@ public class LevelOrder {
         return result;
     }
 
+    public static List<List<Integer>> levelOrder1(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        levelOrderResc(root, 0, result);
+        return result;
+    }
+
+    public static void levelOrderResc(TreeNode root, int level, List<List<Integer>> result) {
+        if (root != null) {
+            if (result.size() <= level) {
+                result.add(new ArrayList<>());
+            }
+            result.get(level).add(root.val);
+            levelOrderResc(root.left, level + 1, result);
+            levelOrderResc(root.right, level + 1, result);
+        }
+    }
+
 
     public static void main(String[] args) {
         TreeNode n1 = new TreeNode(3);
@@ -72,7 +89,9 @@ public class LevelOrder {
         n3.right = n5;
 
         List<List<Integer>> list = levelOrder(n1);
+        List<List<Integer>> list1 = levelOrder1(n1);
         System.out.println(Arrays.toString(list.toArray()));
+        System.out.println(Arrays.toString(list1.toArray()));
     }
 
 }
