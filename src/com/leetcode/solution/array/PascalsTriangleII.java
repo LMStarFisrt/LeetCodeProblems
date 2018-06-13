@@ -78,7 +78,7 @@ public class PascalsTriangleII {
         int j = 1;
         while (j <= rowIndex) {
             for (int i = j; i > 0; i--) {
-                arr[i] = arr[i]+arr[i-1];
+                arr[i] = arr[i] + arr[i - 1];
             }
             j++;
         }
