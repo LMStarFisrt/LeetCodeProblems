@@ -23,7 +23,11 @@ public class AddDigits {
         return addDigits(num / 10 + num % 10);
     }
 
+    public static int addDigitsI(int num) {
+        return (num - 1) % 9 + 1;
+    }
+
     public static void main(String[] args) {
-        System.out.println(addDigits(38));
+        System.out.println(addDigitsI(38));
     }
 }
