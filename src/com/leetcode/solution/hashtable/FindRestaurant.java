@@ -44,29 +44,37 @@ public class FindRestaurant {
         for (int i = 0; i < list2.length; i++) {
             list2Map.put(list2[i], i);
         }
-        Map<String, Integer> sameMap = new HashMap<>();
+        TreeMap<Integer, List<String>> sameMap = new TreeMap<>();
+        Map<String, Integer> map1;
+        Map<String, Integer> map2;
         int minIndexSum = 0;
-        if (list1.length>=list2.length){
-            for (Map.Entry<String,Integer> entry:list1Map.entrySet()) {
-                if (list2Map.containsKey(entry.getKey())){
-                    minIndexSum = list2Map.get(entry.getKey()) + entry.getValue();
-                    sameMap.put(entry.getKey(), minIndexSum);
-                }
-            }
-        }else {
-            for (Map.Entry<String,Integer> entry:list2Map.entrySet()) {
-                if (list1Map.containsKey(entry.getKey())){
-                    minIndexSum = list1Map.get(entry.getKey()) + entry.getValue();
-                    sameMap.put(entry.getKey(), minIndexSum);
+        if (list1.length >= list2.length) {
+            map1 = list1Map;
+            map2 = list2Map;
+        } else {
+            map1 = list2Map;
+            map2 = list1Map;
+        }
+        for (Map.Entry<String, Integer> entry : map1.entrySet()) {
+            if (map2.containsKey(entry.getKey())) {
+                minIndexSum = map2.get(entry.getKey()) + entry.getValue();
+                if (sameMap.containsKey(minIndexSum)) {
+                    List<String> list = sameMap.get(minIndexSum);
+                    list.add(entry.getKey());
+                    sameMap.put(minIndexSum, list);
+                } else {
+                    List<String> list = new ArrayList<>();
+                    list.add(entry.getKey());
+                    sameMap.put(minIndexSum, list);
                 }
             }
         }
-        return result.toArray(new String[result.size()]);
+        return sameMap.get(sameMap.firstKey()).toArray(new String[0]);
     }
 
     public static void main(String[] args) {
         String[] list1 = {"Shogun", "Tapioca Express", "Burger King", "KFC"};
         String[] list2 = {"KFC", "Shogun", "Burger King"};
-        System.out.println(Arrays.toString(findRestaurant(list1,list2)));
+        System.out.println(Arrays.toString(findRestaurant(list1, list2)));
     }
 }
