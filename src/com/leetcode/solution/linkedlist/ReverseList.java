@@ -1,5 +1,7 @@
 package com.leetcode.solution.linkedlist;
 
+import com.leetcode.solution.util.ListUtils;
+
 /**
  * 反转一个单链表。
  * <p>

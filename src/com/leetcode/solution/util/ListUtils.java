@@ -1,4 +1,6 @@
-package com.leetcode.solution.linkedlist;
+package com.leetcode.solution.util;
+
+import com.leetcode.solution.linkedlist.ListNode;
 
 /**
  * @author dadisdad
