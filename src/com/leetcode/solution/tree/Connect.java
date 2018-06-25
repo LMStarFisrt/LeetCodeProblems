@@ -52,28 +52,7 @@ public class Connect {
     public static void connect(TreeLinkNode root) {
         LinkedList<TreeLinkNode> list = new LinkedList<>();
         list.offerLast(root);
-        while (!list.isEmpty()) {
-            List<TreeLinkNode> cc = new ArrayList<>();
-            int count = list.size();
-            while (count != 0) {
-                TreeLinkNode temp = list.poll();
-                cc.add(temp);
-                count--;
-                if (temp.left != null) {
-                    list.offerLast(temp.left);
-                }
-                if (temp.right != null) {
-                    list.offerLast(temp.right);
-                }
-            }
-            for (int i = 0; i < cc.size(); i++) {
-                if (i == cc.size() - 1) {
-                    cc.get(i).next = null;
-                } else {
-                    cc.get(i).next = cc.get(i + 1);
-                }
-            }
-        }
+        ConnectII.visit(list);
     }
 
     /**
