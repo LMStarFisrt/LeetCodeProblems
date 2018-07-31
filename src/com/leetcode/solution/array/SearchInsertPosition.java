@@ -16,23 +16,23 @@ public class SearchInsertPosition {
     }
 
     /**
-     * 采用二分查找可能不对，在数组元素为[3,3,3,3,3]时，插入3,返回是2
      *
      * @param nums
      * @param target
      * @return
      */
     public static int searchInsertByBSearch(int[] nums, int target) {
-        int low = 0;
+        if (nums.length == 0) {
+            return 0;
+        }
         int high = nums.length - 1;
+        int low = 0;
         while (low <= high) {
-            int middle = low + (high - low) / 2;
-            if (nums[middle] < target) {
-                low = middle + 1;
-            } else if (nums[middle] > target) {
-                high = middle - 1;
-            } else if (nums[middle] == target) {
-                return middle;
+            int mid = low + (high - low) / 2;
+            if (nums[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
             }
         }
         return low;
