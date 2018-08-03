@@ -59,8 +59,8 @@ public class IsSameTree {
     }
 
     public static void main(String[] args) {
-        TreeNode p = TreeUtils.buildTree(new Integer[]{1, 2, 3});
-        TreeNode q = TreeUtils.buildTree(new Integer[]{1, 1, 3});
+        TreeNode p = TreeUtils.deserialize("1,2,3");
+        TreeNode q = TreeUtils.deserialize("1,1,3");
         System.out.println(isSameTree(p, q));
     }
 }

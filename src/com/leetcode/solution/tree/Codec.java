@@ -1,48 +1,23 @@
-package com.leetcode.solution.util;
+package com.leetcode.solution.tree;
 
-import com.leetcode.solution.tree.TreeNode;
+import com.leetcode.solution.util.TreeUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 树工具类
+ * 二叉树的序列化及反序列化
  *
  * @author dadisdad
- * @date 2018/6/13
+ * @date 2018-07-31
  */
-public class TreeUtils {
+public class Codec {
 
     /**
-     * 节点转换字符串
-     *
-     * @param node
-     * @return
+     * Encodes a tree to a single string.
      */
-    public static String nodeToString(TreeNode node) {
-        return node == null ? null : node.val + "";
-    }
-
-    /**
-     * 树的深度
-     *
-     * @param root
-     * @return
-     */
-    public static int treeDepth(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        int left = treeDepth(root.left);
-        int right = treeDepth(root.right);
-        return (left > right ? left : right) + 1;
-    }
-
-    /**
-     * 树转成字符串
-     */
-    public static String serialize(TreeNode root) {
+    public String serialize(TreeNode root) {
         if (root == null) {
             return "";
         }
@@ -77,9 +52,9 @@ public class TreeUtils {
     }
 
     /**
-     * 根据字符串构造树
+     * Decodes your encoded data to tree.
      */
-    public static TreeNode deserialize(String data) {
+    public TreeNode deserialize(String data) {
         if (data.isEmpty()) {
             return null;
         }
@@ -140,5 +115,44 @@ public class TreeUtils {
             }
         }
         return root;
+    }
+
+    public static void main(String[] args) {
+        //[1,2,3,null,null,4,5,6,null,8,9,11,45,46,null,47,48]
+        TreeNode root = new TreeNode(1);
+        TreeNode a = new TreeNode(2);
+        TreeNode b = new TreeNode(3);
+        TreeNode c = new TreeNode(4);
+        TreeNode d = new TreeNode(5);
+        TreeNode e = new TreeNode(6);
+        TreeNode f = new TreeNode(8);
+        TreeNode g = new TreeNode(9);
+        TreeNode h = new TreeNode(11);
+        TreeNode i = new TreeNode(45);
+        TreeNode j = new TreeNode(46);
+        TreeNode k = new TreeNode(47);
+        TreeNode l = new TreeNode(48);
+
+        root.left = a;
+        root.right = b;
+
+        b.left = c;
+        b.right = d;
+
+        c.left = e;
+
+        d.left = f;
+        d.right = g;
+
+        e.left = h;
+        e.right = i;
+
+        f.left = j;
+
+        g.left = k;
+        g.right = l;
+
+        Codec codec = new Codec();
+        System.out.println(codec.deserialize(codec.serialize(root)));
     }
 }
