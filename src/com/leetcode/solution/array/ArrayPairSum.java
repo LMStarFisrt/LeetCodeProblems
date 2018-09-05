@@ -26,19 +26,30 @@ public class ArrayPairSum {
     public static int arrayPairSumI(int[] nums) {
         int sum = 0;
         Arrays.sort(nums);
-        for (int i = 0; i < nums.length; i+=2) {
-            sum+=nums[i];
+        for (int i = 0; i < nums.length; i += 2) {
+            sum += nums[i];
         }
         return sum;
     }
 
     public static int arrayPairSumII(int[] nums) {
-        int sum = 0;
-        Arrays.sort(nums);
-        for (int i = 0; i < nums.length; i+=2) {
-            sum+=nums[i];
+        int[] index = new int[20001];
+        for (int i = 0; i < nums.length; i++) {
+            index[nums[i] + 10000]++;
         }
-        return sum;
+
+        int res = 0;
+        boolean odd = true;
+        for (int i = 0; i < index.length; i++) {
+            while (index[i] > 0) {
+                if (odd) {
+                    res += i - 10000;
+                }
+                odd = !odd;
+                index[i]--;
+            }
+        }
+        return res;
     }
 
     public static void main(String[] args) {
